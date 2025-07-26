@@ -1,0 +1,424 @@
+/* Imported Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Define the colors to be used throughout the app */
+:root {
+    --primary-blue: #3B5998;
+    --primary-blue-dark: #357ABD;
+    --success-green: #2ECC71;
+    --action-red: #E74C3C;
+    --dark-text: #34495E;
+    --secondary-text: #7f8c8d;
+    --border-color: #BDC3C7;
+    --background-light: #F4F7F9;
+    --white: #FFFFFF;
+    --accent-blue: #007BFF;
+}
+
+/* Base styles for the whole document */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-light);
+    color: var(--dark-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+h2, h3 {
+    color: var(--dark-text);
+    font-weight: 600;
+}
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+
+/* Main container using Flexbox to position the sidebar and content area */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Fixed sidebar that stays visible on scroll */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    box-sizing: border-box;
+    width: 240px;
+    background-color: var(--white);
+    border-right: 1px solid var(--border-color);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--secondary-text);
+    transition: background-color 0.2s, color 0.2s;
+}
+.sidebar-nav a:hover {
+    background-color: var(--background-light);
+    color: var(--dark-text);
+}
+.sidebar-nav a.active {
+    background-color: #eaf1f8; /* A light, complementary blue */
+    color: var(--primary-blue); /* Use your new dark blue for the text */
+    font-weight: 700; /* Make the font bolder */
+    border-left: 4px solid var(--accent-blue); /* The accent color highlight! */
+    padding-left: 11px; /* Adjust padding to keep text aligned */
+}
+.sidebar .logout-btn {
+    margin-top: auto;
+}
+
+/* Main content area where the page content will be displayed */
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    margin-left: 240px;
+}
+
+
+/* Cards */
+.card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+/* Forms & Inputs */
+form label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+form input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+/* Buttons: base styles for all buttons */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.1s;
+    text-align: center;
+}
+.btn:active {
+    transform: scale(0.98);
+}
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: var(--primary-blue-dark);
+}
+.btn-secondary {
+    background-color: #e0e6eb;
+    color: var(--dark-text);
+}
+.btn-secondary:hover {
+    background-color: #d1d9e0;
+}
+
+.btn-danger {
+    background-color: var(--action-red);
+    color: white;
+}
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background-color: var(--white);
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+}
+.modal .btn {
+    margin: 5px;
+}
+
+/* Avatar Previews: for displaying the user's uploaded avatar */
+#avatarPreviewWrapper {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed var(--border-color);
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+}
+#avatarPreview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Clipboard Icon */
+.icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.copy-icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+/* Login & Register Pages */
+.auth-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 5% auto;
+    padding: 20px;
+}
+
+/* Dashboard Styles */
+.balance-card {
+    text-align: center;
+    background: linear-gradient(135deg, #4A69E2, #3B5998);
+    color: white;
+}
+.balance-card p {
+    font-size: 1.2em;
+    margin: 0;
+    opacity: 0.9;
+}
+.balance-card h1 {
+    font-size: 3em;
+    margin: 10px 0 0 0;
+    color: white;
+}
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+.action-card {
+    background-color: var(--white);
+    padding: 25px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    font-size: 1.1em;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--dark-text);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-bottom: 4px solid var(--accent-blue);
+}
+
+/* Transaction History Table Styles */
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.transaction-table th, .transaction-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--background-light);
+}
+.transaction-table th {
+    background-color: #F8F9FA;
+    font-weight: 600;
+}
+.transaction-table tr:last-child td {
+    border-bottom: none;
+}
+.amount-credit {
+    color: var(--success-green);
+    font-weight: 600;
+}
+.amount-debit {
+    color: var(--action-red);
+    font-weight: 600;
+}
+
+/* Profile Page Styles*/
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.profile-info h2 {
+    margin: 0 0 5px 0;
+}
+.profile-info p {
+    margin: 0;
+    color: var(--secondary-text);
+}
+
+/* Dashboard Recent Transactions Styles */
+.recent-transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.transaction-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--background-light);
+}
+.transaction-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.transaction-details {
+    flex-grow: 1;
+    margin-left: 15px;
+}
+.transaction-desc {
+    font-weight: 500;
+    display: block;
+}
+.transaction-date {
+    font-size: 0.9em;
+    color: var(--secondary-text);
+}
+
+.transaction-amount {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* Logo Styling */
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.logo img {
+    height: auto;
+    max-width: 100%;
+}
+.sidebar .logo {
+    margin-top: 0;
+    padding: 0 10px;
+}
+.sidebar .logo img {
+    max-height: 40px;
+}
+.auth-container .logo img {
+    max-height: 50px;
+}
+
+
+/* Alert Boxes for Success and Error Messages */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+.alert-error {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+
+/* Password Strength Indicators */
+.weak { 
+    color: var(--action-red); font-weight: 500; 
+}
+.medium { 
+    color: #f39c12; font-weight: 500; 
+}
+.strong { 
+    color: var(--success-green); font-weight: 500; 
+}
+
+/* For positioning the 'Show' button for password inputs */
+.password-wrapper {
+    position: relative;
+}
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] {
+    padding-right: 60px; /* Makes space for the button */
+}
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--secondary-text);
+    font-weight: 600;
+}
